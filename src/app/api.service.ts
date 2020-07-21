@@ -4,7 +4,6 @@ import { HttpClient} from '@angular/common/http';
 @Injectable()
 
 export class ApiService {
-  question = {};
   constructor(private  http: HttpClient) {}
   // tslint:disable-next-line:typedef
   post(question){

@@ -5,11 +5,11 @@ import {ApiService} from './api.service';
   templateUrl: './question.component.html'
 })
 export class QuestionComponent {
-   question = {};
+   question = {text: '' };
   // tslint:disable-next-line:typedef
   constructor(private  api: ApiService){}
   // tslint:disable-next-line:typedef
   post(question) {
-    this.api.postQuestion(question);
+    this.api.post(question);
   }
 }

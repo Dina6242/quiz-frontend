@@ -6,7 +6,10 @@ import { HttpClient} from '@angular/common/http';
 export class ApiService {
   constructor(private  http: HttpClient) {}
   // tslint:disable-next-line:typedef
-  post(question){
+  getQuestions(){
+     return this.http.get('http://localhost:60197/api/questions');
+    }
+    postQuestion(question){
     this.http.post('http://localhost:60197/api/questions', question).subscribe( res => {
       console.log(res);
     });

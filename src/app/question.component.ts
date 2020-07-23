@@ -5,7 +5,7 @@ import {ApiService} from './api.service';
   templateUrl: './question.component.html'
 })
 export class QuestionComponent {
-   question = {text: '' };
+   question = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: ''};
   // tslint:disable-next-line:typedef
   constructor(private  api: ApiService){}
   // tslint:disable-next-line:typedef

@@ -7,7 +7,7 @@ import {ApiService} from './api.service';
 export class QuestionComponent implements OnInit{
    question = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: '', id : null};
   // tslint:disable-next-line:typedef
-  constructor(private  api: ApiService){}
+  constructor(public  api: ApiService){}
   ngOnInit(): void{
         this.api.questionSelected.subscribe(question => this.question = question);
   }

@@ -5,7 +5,7 @@ import {ApiService} from './api.service';
   templateUrl: './question.component.html'
 })
 export class QuestionComponent implements OnInit{
-   question = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: '', id : null};
+   question = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: '', id : undefined};
   // tslint:disable-next-line:typedef
   constructor(public  api: ApiService){}
   ngOnInit(): void{

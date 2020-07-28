@@ -24,6 +24,11 @@ export class ApiService {
         console.log(res);
       });
     }
+  postQuiz(quiz): void {
+    this.http.post('http://localhost:60197/api/quizzes', quiz).subscribe( res => {
+      console.log(res);
+    });
+  }
   selectQuestion(question): void {
     this.selectedQuestion.next(question);
   }

@@ -6,6 +6,6 @@ import {ApiService} from './api.service';
   templateUrl: './quiz.component.html'
 })
 export class QuizComponent  {
-  quiz: {'', id: {} , title: ''};
+  quiz: {'', id: undefined , title: ''};
   constructor(public  api: ApiService){}
   }

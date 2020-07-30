@@ -16,9 +16,5 @@ export class QuestionsComponent implements OnInit {
       this.questions = res;
     });
   }
-  // tslint:disable-next-line:typedef
-  post(question) {
-    this.api.postQuestion(question);
-  }
 }
 

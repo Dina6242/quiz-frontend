@@ -9,11 +9,18 @@ export class ApiService {
   private  selectedQuestion = new Subject<any>();
   questionSelected = this.selectedQuestion.asObservable();
 
+  private  selectedQuiz = new Subject<any>();
+  quizSelected = this.selectedQuiz.asObservable();
+
   constructor(private  http: HttpClient) {}
   // tslint:disable-next-line:typedef
   getQuestions(){
      return this.http.get('http://localhost:60197/api/questions');
     }
+  // tslint:disable-next-line:typedef
+   getQuizzes(){
+    return this.http.get('http://localhost:60197/api/quizzes');
+  }
     postQuestion(question): void {
     this.http.post('http://localhost:60197/api/questions', question).subscribe( res => {
       console.log(res);
@@ -29,7 +36,15 @@ export class ApiService {
       console.log(res);
     });
   }
+  putQuiz(quiz): void{
+    this.http.put('http://localhost:60197/api/quizzes', + quiz.id).subscribe( res => {
+      console.log(res);
+    });
+  }
   selectQuestion(question): void {
     this.selectedQuestion.next(question);
+  }
+  selectQuiz(quiz): void {
+    this.selectedQuiz.next(quiz);
   }
 }

@@ -8,11 +8,11 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class QuestionComponent implements OnInit{
    question = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: '', id : undefined};
-   quizId ;
+   quizId: number ;
   // tslint:disable-next-line:typedef
   constructor(public  api: ApiService, private route: ActivatedRoute){}
   ngOnInit(): void{
-        this.quizId  = this.route.snapshot.paramMap.get('quizId');
+        this.quizId  = Number(this.route.snapshot.paramMap.get('quizId'));
         this.api.questionSelected.subscribe(question => this.question = question);
   }
 

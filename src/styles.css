@@ -10,3 +10,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .clickLink {
   cursor: pointer;
 }
+.mat-card-cvr{
+  margin: 0 auto;
+  width: 40%;
+}

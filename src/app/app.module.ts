@@ -9,7 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import { QuestionComponent} from './question.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
-import {FormsModule} from '@angular/forms';
+import {FormsModule , ReactiveFormsModule} from '@angular/forms';
 import {ApiService} from './api.service';
 import { QuestionsComponent} from './questions.component';
 import {MatListModule} from '@angular/material/list';
@@ -18,12 +18,13 @@ import {HomeComponent} from './home.component';
 import {QuizComponent} from './quiz.component';
 import {NavComponent} from './nav.component';
 import {QuizzesComponent} from './quizzes.component';
+import {RegisterComponent} from './register.component';
 
 const routes = [
   {path : '' , component: HomeComponent},
   {path : 'question' , component: QuestionComponent},
   {path : 'question/:quizId' , component: QuestionComponent},
-  {path: 'questions', component: QuestionsComponent},
+  {path: 'register', component: RegisterComponent},
   {path : 'quiz' , component: QuizComponent}
 
 ];
@@ -36,7 +37,8 @@ const routes = [
     HomeComponent,
     QuizComponent,
     NavComponent,
-    QuizzesComponent
+    QuizzesComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ const routes = [
     MatButtonModule,
     MatListModule,
     MatToolbarModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

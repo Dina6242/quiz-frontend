@@ -19,6 +19,7 @@ import {QuizComponent} from './quiz.component';
 import {NavComponent} from './nav.component';
 import {QuizzesComponent} from './quizzes.component';
 import {RegisterComponent} from './register.component';
+import { AuthService} from './auth.service';
 
 const routes = [
   {path : '' , component: HomeComponent},
@@ -38,7 +39,7 @@ const routes = [
     QuizComponent,
     NavComponent,
     QuizzesComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +55,7 @@ const routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

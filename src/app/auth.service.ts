@@ -9,7 +9,7 @@ export class AuthService {
   // tslint:disable-next-line:typedef
   register(credentials) {
     this.http.post<any>(`http://localhost:60197/api/account`, credentials).subscribe(res => {
-      localStorage.setItem('token', res);
+      localStorage.setItem('token', res.token);
     });
   }
 }

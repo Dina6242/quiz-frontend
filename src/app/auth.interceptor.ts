@@ -1,17 +1,13 @@
-import { HttpInterceptor} from '@angular/common/http';
+import { HttpInterceptor } from '@angular/common/http';
 
-
-export class AuthInterceptor implements HttpInterceptor{
-  constructor() {}
-  // tslint:disable-next-line:typedef
-  // @ts-ignore
-  // tslint:disable-next-line:typedef
-  intercept(req , next) {}
-   var token = localStorage.getItem('token');
-  var authRequest = req.clone({
-    headers: req.header.set('Authorization', `Bearer ${token}`)
-  });
-
-  return next.handle(authRequest);
+export class AuthInterceptor implements HttpInterceptor {
+  intercept(req, next): any {
+    const token = localStorage.getItem('token');
+    const authRequest = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`,
+    },
+    });
+    return next.handle(authRequest);
+  }
 }
-

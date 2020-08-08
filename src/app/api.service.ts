@@ -18,9 +18,12 @@ export class ApiService {
      return this.http.get('http://localhost:60197/api/questions', quizId);
     }
   // tslint:disable-next-line:typedef
-   getQuizzes(){
+   getQuizzes() {
     return this.http.get('http://localhost:60197/api/quizzes');
   }
+   getAllQuizzes(): any{
+    return this.http.get('http://localhost:60197/api/quizzes/all');
+    }
     postQuestion(question): void {
     this.http.post('http://localhost:60197/api/questions', question).subscribe( res => {
       console.log(res);

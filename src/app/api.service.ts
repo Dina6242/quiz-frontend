@@ -4,7 +4,7 @@ import { Subject} from 'rxjs';
 
 @Injectable()
 
-export class ApiService {
+export  class ApiService {
 
   private  selectedQuestion = new Subject<any>();
   questionSelected = this.selectedQuestion.asObservable();

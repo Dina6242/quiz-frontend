@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {MatInputModule} from '@angular/material/input';
 import {RouterModule} from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
 import { QuestionComponent} from './question.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
@@ -26,6 +27,7 @@ import { AuthService} from './auth.service';
 import {AuthInterceptor} from './auth.interceptor';
 import { PlayComponent} from './play.component';
 import { PlayQuizComponent} from './playQuiz.component';
+import { FinishedComponent} from './finished.component';
 
 const routes = [
   {path : '' , component: HomeComponent},
@@ -51,7 +53,8 @@ const routes = [
     RegisterComponent,
     LoginComponent,
     PlayComponent,
-    PlayQuizComponent
+    PlayQuizComponent,
+    FinishedComponent
   ],
   imports: [
     BrowserModule,
@@ -67,12 +70,14 @@ const routes = [
     FormsModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ],
   providers: [ApiService, AuthService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [FinishedComponent]
 })
 export class AppModule { }

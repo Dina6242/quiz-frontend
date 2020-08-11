@@ -1,13 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from './api.service';
 import {ActivatedRoute} from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {FinishedComponent} from './finished.component';
 
 
 @Component ({
   templateUrl: './playQuiz.component.html'
 })
 export class PlayQuizComponent implements  OnInit{
-  constructor(public  api: ApiService, private route: ActivatedRoute){}
+  constructor(public  api: ApiService, private route: ActivatedRoute, private dialog: MatDialog ){}
   questions;
   quizId;
   question = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: ''};
@@ -25,6 +27,22 @@ export class PlayQuizComponent implements  OnInit{
 
     });
   }
+  finish(): void {
+    let correct = 0;
+    this.questions.forEach(q => {
+      if (q.correctAnswer === q.selectedAnswer){
+        correct ++ ;
+      }
+    });
+    const dialogRef = this.dialog.open(FinishedComponent, {
+      data: {correct, total: this.questions.length}
+    });
+    console.log(correct);
+  }
+
+
+
+
 
   setStep(index: number): void {
     this.step = index;

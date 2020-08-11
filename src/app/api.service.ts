@@ -15,7 +15,7 @@ export  class ApiService {
   constructor(private  http: HttpClient) {}
   // tslint:disable-next-line:typedef
   getQuestions(quizId){
-     return this.http.get('http://localhost:60197/api/questions', quizId);
+     return this.http.get(`http://localhost:60197/api/questions/${quizId}`);
     }
   // tslint:disable-next-line:typedef
    getQuizzes() {

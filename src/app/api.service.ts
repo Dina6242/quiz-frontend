@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {Question} from './question';
 import {Quiz} from './quiz';
 
@@ -15,15 +15,14 @@ export  class ApiService {
   quizSelected = this.selectedQuiz.asObservable();
 
   constructor(private  http: HttpClient) {}
-  // tslint:disable-next-line:typedef
-  getQuestions(quizId: number): object{
-     return this.http.get(`http://localhost:60197/api/questions/${quizId}`);
+  getQuestions(quizId: number): Observable<Question>{
+     return this.http.get<Question>(`http://localhost:60197/api/questions/${quizId}`);
     }
-    getQuizzes(): object{
-    return this.http.get('http://localhost:60197/api/quizzes');
+    getQuizzes(): Observable<Quiz>{
+    return this.http.get<Quiz>('http://localhost:60197/api/quizzes');
   }
-   getAllQuizzes(): object{
-    return this.http.get('http://localhost:60197/api/quizzes/all');
+   getAllQuizzes(): Observable<Quiz> {
+    return this.http.get<Quiz>('http://localhost:60197/api/quizzes/all');
     }
     postQuestion(question: string): void {
     this.http.post('http://localhost:60197/api/questions', question).subscribe( res => {

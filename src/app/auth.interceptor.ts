@@ -1,7 +1,8 @@
-import { HttpInterceptor } from '@angular/common/http';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 export class AuthInterceptor implements HttpInterceptor {
-  intercept(req, next): any {
+  intercept(req: HttpRequest<void>, next: HttpHandler): Observable<HttpEvent<void>>  {
     const token = localStorage.getItem('token');
     const authRequest = req.clone({
       setHeaders: {

@@ -10,7 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 export class QuestionsComponent implements OnInit {
 
   question = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: ''};
-  questions ;
+   questions: string|undefined;
   // tslint:disable-next-line:typedef
   constructor(public  api: ApiService, private route: ActivatedRoute){}
   ngOnInit(): void{

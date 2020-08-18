@@ -5,7 +5,7 @@ import { Router} from '@angular/router';
 @Injectable()
 export class AuthService {
   constructor(private  http: HttpClient, private  router: Router) {}
-  get isAuthenticated(): any{
+  get isAuthenticated(): void{
     return !!localStorage.getItem('token');
   }
   register(credentials): void {

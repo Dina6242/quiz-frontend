@@ -6,7 +6,7 @@ import {ApiService} from './api.service';
   templateUrl: './play.component.html'
 })
 export class PlayComponent implements  OnInit{
-  quizzes;
+  quizzes = {};
   constructor(public  api: ApiService){}
     ngOnInit(): void{
       this.api.getAllQuizzes().subscribe( res => {

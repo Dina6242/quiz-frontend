@@ -24,22 +24,22 @@ export  class ApiService {
    getAllQuizzes(): Observable<Quiz[]> {
     return this.http.get<Quiz[]>('http://localhost:60197/api/quizzes/all');
     }
-    postQuestion(question: string): void {
+    postQuestion(question: Question ): void {
     this.http.post('http://localhost:60197/api/questions', question).subscribe( res => {
       console.log(res);
     });
   }
-    putQuestion(question: {id: number}): void{
+    putQuestion(question: Question): void{
       this.http.put('http://localhost:60197/api/questions', + question.id).subscribe( res => {
         console.log(res);
       });
     }
-  postQuiz(quiz: string): void {
+  postQuiz(quiz: Quiz): void {
     this.http.post('http://localhost:60197/api/quizzes', quiz).subscribe( res => {
       console.log(res);
     });
   }
-  putQuiz(quiz: {id: number} ): void{
+  putQuiz(quiz: Quiz ): void{
     this.http.put('http://localhost:60197/api/quizzes', + quiz.id).subscribe( res => {
       console.log(res);
     });

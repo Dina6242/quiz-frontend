@@ -15,14 +15,14 @@ export  class ApiService {
   quizSelected = this.selectedQuiz.asObservable();
 
   constructor(private  http: HttpClient) {}
-  getQuestions(quizId: number): Observable<Question>{
-     return this.http.get<Question>(`http://localhost:60197/api/questions/${quizId}`);
+  getQuestions(quizId: number): Observable<Question[]>{
+     return this.http.get<Question[]>(`http://localhost:60197/api/questions/${quizId}`);
     }
     getQuizzes(): Observable<Quiz>{
     return this.http.get<Quiz>('http://localhost:60197/api/quizzes');
   }
-   getAllQuizzes(): Observable<Quiz> {
-    return this.http.get<Quiz>('http://localhost:60197/api/quizzes/all');
+   getAllQuizzes(): Observable<Quiz[]> {
+    return this.http.get<Quiz[]>('http://localhost:60197/api/quizzes/all');
     }
     postQuestion(question: string): void {
     this.http.post('http://localhost:60197/api/questions', question).subscribe( res => {

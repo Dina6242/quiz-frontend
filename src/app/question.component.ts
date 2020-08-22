@@ -9,8 +9,9 @@ import {Question} from './question';
   templateUrl: './question.component.html'
 })
 export class QuestionComponent implements OnInit{
-   question = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: '' };
+   question: Question;
    quizId: number ;
+   id: number;
   constructor(public  api: ApiService, private route: ActivatedRoute){}
   ngOnInit(): void{
         this.quizId  = Number(this.route.snapshot.paramMap.get('quizId'));

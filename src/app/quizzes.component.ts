@@ -8,7 +8,7 @@ import {Quiz} from './quiz';
 })
 export class QuizzesComponent implements OnInit {
 
-  quiz = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: ''};
+  // quiz = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: ''};
   quizzes: Quiz;
   constructor(public  api: ApiService){}
   ngOnInit(): void{

@@ -3,5 +3,5 @@ export interface Quiz {
   quiz: string;
   id: number ;
   text: string ;
-  quizzes: Quiz[];
+  quizzes: string;
 }

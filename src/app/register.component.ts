@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {FormBuilder,  Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from './auth.service';
 
 @Component ({
   templateUrl: './register.component.html'
 })
 export class RegisterComponent{
-  form;
+  form: FormGroup;
   constructor(public auth: AuthService, private fb: FormBuilder){
       this.form = fb.group({
         email: ['', Validators.required],

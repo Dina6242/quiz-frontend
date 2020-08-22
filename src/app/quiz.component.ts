@@ -6,7 +6,7 @@ import {ApiService} from './api.service';
   templateUrl: './quiz.component.html'
 })
 export class QuizComponent implements  OnInit{
-  quiz = { id: undefined , text: ''};
+  quiz = {  text: ''};
   constructor(public  api: ApiService){}
   ngOnInit(): void{
     this.api.quizSelected.subscribe(quiz => this.quiz = quiz);

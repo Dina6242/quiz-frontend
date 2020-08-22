@@ -1,4 +1,7 @@
 export interface Question {
+  answers: string[];
+  quizId: number;
+  selectedAnswer: string;
   id: number;
   question: string;
   text: string;

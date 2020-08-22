@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from './api.service';
 import {ActivatedRoute} from '@angular/router';
+import {Question} from './question';
+
 
 @Component ({
   selector:  'app-question',
   templateUrl: './question.component.html'
 })
 export class QuestionComponent implements OnInit{
-   question = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: '', id : undefined};
+   question = {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: '' };
    quizId: number ;
-  // tslint:disable-next-line:typedef
   constructor(public  api: ApiService, private route: ActivatedRoute){}
   ngOnInit(): void{
         this.quizId  = Number(this.route.snapshot.paramMap.get('quizId'));
@@ -17,8 +18,7 @@ export class QuestionComponent implements OnInit{
   }
 
 
-  // tslint:disable-next-line:typedef
-  post(question) {
+  post(question: Question): void {
     question.quizId = this.quizId ;
     this.api.postQuestion(question);
   }

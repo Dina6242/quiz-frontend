@@ -21,8 +21,8 @@ export class ApiService {
     return this.http.get<Question[]>(`http://localhost:60197/api/questions/${quizId}`);
   }
 
-  getQuizzes(): Observable<Quiz> {
-    return this.http.get<Quiz>('http://localhost:60197/api/quizzes');
+  getQuizzes(): Observable<Quiz[]> {
+    return this.http.get<Quiz[]>('http://localhost:60197/api/quizzes');
   }
 
   getAllQuizzes(): Observable<Quiz[]> {

@@ -20,7 +20,6 @@ export class ApiService {
   getQuestions(quizId: number): Observable<Question[]> {
     return this.http.get<Question[]>(`http://localhost:60197/api/questions/${quizId}`);
   }
-
   getQuizzes(): Observable<Quiz[]> {
     return this.http.get<Quiz[]>('http://localhost:60197/api/quizzes');
   }
@@ -28,31 +27,26 @@ export class ApiService {
   getAllQuizzes(): Observable<Quiz[]> {
     return this.http.get<Quiz[]>('http://localhost:60197/api/quizzes/all');
   }
-
   postQuestion(question: Question): void {
     this.http.post('http://localhost:60197/api/questions', question).subscribe(res => {
       console.log(res);
     });
   }
-
   putQuestion(question: Question): void {
-    this.http.put('http://localhost:60197/api/questions', +question.id).subscribe(res => {
+    this.http.put('http://localhost:60197/api/questions' + question.id, question).subscribe(res => {
       console.log(res);
     });
   }
-
-  postQuiz(quiz: Quiz): void {
+  postQuiz(quiz: Partial<Quiz>): void {
     this.http.post('http://localhost:60197/api/quizzes', quiz).subscribe(res => {
       console.log(res);
     });
   }
-
-  putQuiz(quiz: Quiz): void {
-    this.http.put('http://localhost:60197/api/quizzes', +quiz.id).subscribe(res => {
+  putQuiz(quiz: Partial<Quiz>): void {
+    this.http.put('http://localhost:60197/api/quizzes' + quiz.id , quiz).subscribe(res => {
       console.log(res);
     });
   }
-
   selectQuestion(question: Question): void {
     this.selectedQuestion.next(question);
   }

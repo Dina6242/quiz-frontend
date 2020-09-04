@@ -4,7 +4,9 @@ import {Router} from '@angular/router';
 import {Credentials} from './credentials';
 import {environment} from '../environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   constructor(private  http: HttpClient, private  router: Router) {
   }

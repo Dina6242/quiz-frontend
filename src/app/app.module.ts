@@ -12,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {FormsModule , ReactiveFormsModule} from '@angular/forms';
-import {ApiService} from './api.service';
 import { QuestionsComponent} from './questions.component';
 import {MatListModule} from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
@@ -23,7 +22,6 @@ import {NavComponent} from './nav.component';
 import {QuizzesComponent} from './quizzes.component';
 import {RegisterComponent} from './register.component';
 import { LoginComponent} from './login.component';
-import { AuthService} from './auth.service';
 import {AuthInterceptor} from './auth.interceptor';
 import { PlayComponent} from './play.component';
 import { PlayQuizComponent} from './playQuiz.component';
@@ -73,7 +71,7 @@ const routes = [
     MatRadioModule,
     MatDialogModule
   ],
-  providers: [ApiService, AuthService, {
+  providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true}],

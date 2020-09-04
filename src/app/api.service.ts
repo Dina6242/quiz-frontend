@@ -20,8 +20,9 @@ export class ApiService {
   }
 
   getQuestions(quizId: number): Observable<Question[]> {
-    return this.http.get<Question[]>(`${environment.apiUrl}${quizId}`);
+    return this.http.get<Question[]>(`${environment.apiUrl}questions/${quizId}`);
   }
+
   getQuizzes(): Observable<Quiz[]> {
     return this.http.get<Quiz[]>(`${environment.apiUrl}quizzes`);
   }
@@ -29,26 +30,31 @@ export class ApiService {
   getAllQuizzes(): Observable<Quiz[]> {
     return this.http.get<Quiz[]>(`${environment.apiUrl}quizzes/all`);
   }
+
   postQuestion(question: Question): void {
     this.http.post(`${environment.apiUrl}questions`, question).subscribe(res => {
       console.log(res);
     });
   }
+
   putQuestion(question: Question): void {
     this.http.put(`${environment.apiUrl}questions` + question.id, question).subscribe(res => {
       console.log(res);
     });
   }
+
   postQuiz(quiz: Partial<Quiz>): void {
     this.http.post(`${environment.apiUrl}quizzes`, quiz).subscribe(res => {
       console.log(res);
     });
   }
+
   putQuiz(quiz: Partial<Quiz>): void {
-    this.http.put(`${environment.apiUrl}quizzes` + quiz.id , quiz).subscribe(res => {
+    this.http.put(`${environment.apiUrl}quizzes` + quiz.id, quiz).subscribe(res => {
       console.log(res);
     });
   }
+
   selectQuestion(question: Question): void {
     this.selectedQuestion.next(question);
   }

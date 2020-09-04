@@ -1,29 +1,36 @@
-import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { Router} from '@angular/router';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 import {Credentials} from './credentials';
+import {environment} from '../environments/environment';
 
 @Injectable()
 export class AuthService {
-  constructor(private  http: HttpClient, private  router: Router) {}
-  get isAuthenticated(): boolean{
+  constructor(private  http: HttpClient, private  router: Router) {
+  }
+
+  get isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
   }
+
   register(credentials: Credentials): void {
-    this.http.post(`http://localhost:60197/api/account`, credentials, {responseType: 'text'}).subscribe(res => {
-      this.authenticate(res);
-  });
-}
-  login(credentials: Credentials): void {
-    this.http.post(`http://localhost:60197/api/account/login`, credentials, {responseType: 'text'}).subscribe(res => {
+    this.http.post(`${environment.apiUrl}account`, credentials, {responseType: 'text'}).subscribe(res => {
       this.authenticate(res);
     });
   }
-  authenticate(res: string): void{
+
+  login(credentials: Credentials): void {
+    this.http.post(`${environment.apiUrl}account/login`, credentials, {responseType: 'text'}).subscribe(res => {
+      this.authenticate(res);
+    });
+  }
+
+  authenticate(res: string): void {
     localStorage.setItem('token', res);
     this.router.navigate(['/']);
   }
-  logout(): void{
+
+  logout(): void {
     localStorage.removeItem('token');
   }
 }

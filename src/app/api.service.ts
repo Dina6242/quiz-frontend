@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
 import {Question} from './question';
 import {Quiz} from './quiz';
+import {environment} from '../environments/environment';
+
 
 @Injectable()
 
@@ -18,32 +20,32 @@ export class ApiService {
   }
 
   getQuestions(quizId: number): Observable<Question[]> {
-    return this.http.get<Question[]>(`http://localhost:60197/api/questions/${quizId}`);
+    return this.http.get<Question[]>(`${environment.apiUrl}${quizId}`);
   }
   getQuizzes(): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>('http://localhost:60197/api/quizzes');
+    return this.http.get<Quiz[]>(`${environment.apiUrl}quizzes`);
   }
 
   getAllQuizzes(): Observable<Quiz[]> {
-    return this.http.get<Quiz[]>('http://localhost:60197/api/quizzes/all');
+    return this.http.get<Quiz[]>(`${environment.apiUrl}quizzes/all`);
   }
   postQuestion(question: Question): void {
-    this.http.post('http://localhost:60197/api/questions', question).subscribe(res => {
+    this.http.post(`${environment.apiUrl}questions`, question).subscribe(res => {
       console.log(res);
     });
   }
   putQuestion(question: Question): void {
-    this.http.put('http://localhost:60197/api/questions' + question.id, question).subscribe(res => {
+    this.http.put(`${environment.apiUrl}questions` + question.id, question).subscribe(res => {
       console.log(res);
     });
   }
   postQuiz(quiz: Partial<Quiz>): void {
-    this.http.post('http://localhost:60197/api/quizzes', quiz).subscribe(res => {
+    this.http.post(`${environment.apiUrl}quizzes`, quiz).subscribe(res => {
       console.log(res);
     });
   }
   putQuiz(quiz: Partial<Quiz>): void {
-    this.http.put('http://localhost:60197/api/quizzes' + quiz.id , quiz).subscribe(res => {
+    this.http.put(`${environment.apiUrl}quizzes` + quiz.id , quiz).subscribe(res => {
       console.log(res);
     });
   }

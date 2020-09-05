@@ -26,16 +26,18 @@ import {AuthInterceptor} from './auth.interceptor';
 import { PlayComponent} from './play.component';
 import { PlayQuizComponent} from './playQuiz.component';
 import { FinishedComponent} from './finished.component';
+import {LoggedInGuard} from './loggedin.guard';
+import {UnLoggedGuardGuard} from './unlogged-guard.guard';
 
 const routes = [
-  {path : '' , component: HomeComponent},
-  {path : 'question' , component: QuestionComponent},
-  {path : 'question/:quizId' , component: QuestionComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
-  {path : 'quiz' , component: QuizComponent},
-  {path : 'play' , component: PlayComponent},
-  {path : 'playQuiz/:quizId' , component: PlayQuizComponent}
+  {path : '' , component: HomeComponent, canActivate: [UnLoggedGuardGuard]},
+  {path : 'question' , component: QuestionComponent, canActivate: [UnLoggedGuardGuard]},
+  {path : 'question/:quizId' , component: QuestionComponent, canActivate: [UnLoggedGuardGuard]},
+  {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard] },
+  {path: 'login', component: LoginComponent, canActivate: [LoggedInGuard]},
+  {path : 'quiz' , component: QuizComponent, canActivate: [UnLoggedGuardGuard]},
+  {path : 'play' , component: PlayComponent, canActivate: [UnLoggedGuardGuard]},
+  {path : 'playQuiz/:quizId' , component: PlayQuizComponent, canActivate: [UnLoggedGuardGuard]}
 
 ];
 
@@ -71,7 +73,7 @@ const routes = [
     MatRadioModule,
     MatDialogModule
   ],
-  providers: [{
+  providers: [ LoggedInGuard, UnLoggedGuardGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true}],

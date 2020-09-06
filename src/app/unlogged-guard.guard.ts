@@ -9,13 +9,14 @@ import {AuthService} from './auth.service';
 export class UnLoggedGuardGuard implements CanActivate {
   constructor(public authService: AuthService, private router: Router) {
   }
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (!this.authService.isAuthenticated) {
-      this.router.navigate(['/login']);
-      return false;
+      return true;
     }
-    return true;
+    this.router.navigate(['']);
+    return false;
   }
 }

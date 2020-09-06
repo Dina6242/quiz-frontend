@@ -1,43 +1,43 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {MatInputModule} from '@angular/material/input';
 import {RouterModule} from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
-import { QuestionComponent} from './question.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {QuestionComponent} from './question.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {FormsModule , ReactiveFormsModule} from '@angular/forms';
-import { QuestionsComponent} from './questions.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {QuestionsComponent} from './questions.component';
 import {MatListModule} from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
-import { MatToolbarModule} from '@angular/material/toolbar';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {HomeComponent} from './home.component';
 import {QuizComponent} from './quiz.component';
 import {NavComponent} from './nav.component';
 import {QuizzesComponent} from './quizzes.component';
 import {RegisterComponent} from './register.component';
-import { LoginComponent} from './login.component';
+import {LoginComponent} from './login.component';
 import {AuthInterceptor} from './auth.interceptor';
-import { PlayComponent} from './play.component';
-import { PlayQuizComponent} from './playQuiz.component';
-import { FinishedComponent} from './finished.component';
+import {PlayComponent} from './play.component';
+import {PlayQuizComponent} from './playQuiz.component';
+import {FinishedComponent} from './finished.component';
 import {LoggedInGuard} from './loggedin.guard';
 import {UnLoggedGuardGuard} from './unlogged-guard.guard';
 
 const routes = [
-  {path : '' , component: HomeComponent, canActivate: [UnLoggedGuardGuard]},
-  {path : 'question' , component: QuestionComponent, canActivate: [UnLoggedGuardGuard]},
-  {path : 'question/:quizId' , component: QuestionComponent, canActivate: [UnLoggedGuardGuard]},
-  {path: 'register', component: RegisterComponent, canActivate: [LoggedInGuard] },
-  {path: 'login', component: LoginComponent, canActivate: [LoggedInGuard]},
-  {path : 'quiz' , component: QuizComponent, canActivate: [UnLoggedGuardGuard]},
-  {path : 'play' , component: PlayComponent, canActivate: [UnLoggedGuardGuard]},
-  {path : 'playQuiz/:quizId' , component: PlayQuizComponent, canActivate: [UnLoggedGuardGuard]}
+  {path: '', component: HomeComponent, canActivate: [LoggedInGuard]},
+  {path: 'question', component: QuestionComponent, canActivate: [LoggedInGuard]},
+  {path: 'question/:quizId', component: QuestionComponent, canActivate: [LoggedInGuard]},
+  {path: 'register', component: RegisterComponent , canActivate: [UnLoggedGuardGuard]},
+  {path: 'login', component: LoginComponent, canActivate: [UnLoggedGuardGuard] },
+  {path: 'quiz', component: QuizComponent, canActivate: [LoggedInGuard]},
+  {path: 'play', component: PlayComponent, canActivate: [LoggedInGuard]},
+  {path: 'playQuiz/:quizId', component: PlayQuizComponent, canActivate: [LoggedInGuard]}
 
 ];
 
@@ -73,11 +73,13 @@ const routes = [
     MatRadioModule,
     MatDialogModule
   ],
-  providers: [ LoggedInGuard, UnLoggedGuardGuard, {
+  providers: [LoggedInGuard, UnLoggedGuardGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
-    multi: true}],
+    multi: true
+  }],
   bootstrap: [AppComponent],
   entryComponents: [FinishedComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

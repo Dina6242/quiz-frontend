@@ -33,14 +33,14 @@ export class ApiService {
     return this.http.get<Quiz[]>(`${environment.apiUrl}quizzes/all`);
   }
 
-  postQuestion(question: Question): void {
+  postQuestion(question: Partial<Question>): void {
     this.http.post(`${environment.apiUrl}questions`, question).subscribe(res => {
       console.log(res);
     });
   }
 
-  putQuestion(question: Question): void {
-    this.http.put(`${environment.apiUrl}questions` + question.id, question).subscribe(res => {
+  putQuestion(question: Partial<Question> ): void {
+    this.http.put(`${environment.apiUrl}questions/` + question.id, question).subscribe(res => {
       console.log(res);
     });
   }
@@ -52,7 +52,7 @@ export class ApiService {
   }
 
   putQuiz(quiz: Partial<Quiz>): void {
-    this.http.put(`${environment.apiUrl}quizzes` + quiz.id, quiz).subscribe(res => {
+    this.http.put(`${environment.apiUrl}quizzes/` + quiz.id, quiz).subscribe(res => {
       console.log(res);
     });
   }

@@ -4,12 +4,13 @@ import {ActivatedRoute} from '@angular/router';
 import {Question} from './question';
 
 
+
 @Component ({
   selector:  'app-question',
   templateUrl: './question.component.html'
 })
 export class QuestionComponent implements OnInit{
-   question: Question;
+   question: Partial<Question> =  {text: '', answer1: '', correctAnswer: '', answer2: '' , answer3: '' };
    quizId: number ;
    id: number;
   constructor(public  api: ApiService, private route: ActivatedRoute){}

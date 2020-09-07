@@ -20,7 +20,7 @@ export class QuestionComponent implements OnInit{
   }
 
 
-  post(question: Question): void {
+  post(question: Partial<Question> ): void {
     question.quizId = this.quizId ;
     this.api.postQuestion(question);
   }

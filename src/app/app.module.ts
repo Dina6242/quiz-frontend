@@ -29,6 +29,7 @@ import {FinishedComponent} from './finished.component';
 import {LoggedInGuard} from './loggedin.guard';
 import {UnLoggedGuardGuard} from './unlogged-guard.guard';
 
+
 const routes = [
   {path: '', component: HomeComponent, canActivate: [LoggedInGuard]},
   {path: 'question', component: QuestionComponent, canActivate: [LoggedInGuard]},
@@ -71,7 +72,8 @@ const routes = [
     ReactiveFormsModule,
     MatExpansionModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [LoggedInGuard, UnLoggedGuardGuard, {
     provide: HTTP_INTERCEPTORS,

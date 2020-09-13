@@ -1,66 +1,66 @@
-<mat-card class="mat-card-cvr" >
-  <form [formGroup]="form" (ngSubmit)="auth.register(frmSignup.value)">
-    <mat-form-field class="fullwidth">
-
-        <label for="email" [ngClass]="frmSignup.controls['email'].invalid ? 'text-danger' : ''"></label>
-        <input matInput type="email" placeholder="Email" formControlName="email">
-        <label class="text-danger" *ngIf="frmSignup.controls['email'].hasError('required')">
-          Email is Required!
-        </label>
-        <label class="text-danger" *ngIf="frmSignup.controls['email'].hasError('email')">
-          Enter a valid email address!
-        </label>
-
+<mat-card class="mat-card-cvr">
+  <form [formGroup]="frmSignup" (ngSubmit)="frmSignup.value" class="example-container">
+    <mat-form-field appearance="fill" class="fullwidth">
+      <input matInput placeholder="Email" [ngClass]="frmSignup.controls['email'].invalid ? 'is-invalid' : ''"
+             formControlName="email" required>
     </mat-form-field>
-    <br>
-    <mat-form-field class="fullwidth">
-      <label>
-        <input matInput type="password" placeholder="Password" formControlName="password">
-      </label>
-      <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+    <mat-error class="text-danger" *ngIf="frmSignup.controls['email'].hasError('email')">
+      Enter a valid email address!
+    </mat-error>
+    <div class="example-container">
+      <mat-form-field appearance="fill" class="fullwidth">
+        <input matInput placeholder="Password" [ngClass]="frmSignup.controls['password'].invalid ? 'is-invalid' : ''"
+               formControlName="password" required>
+      </mat-form-field>
+      <mat-error
+        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('minlength')">
         <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
         frmSignup.controls['password'].hasError('minlength') ? 'cancel' :
           'check_circle' }}</i>
         Must be at least 8 characters!
-      </label>
-      <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
-        <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+      </mat-error>
+      <mat-error
+        class="col"
+        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('hasNumber')">
+        <i class="material-icons">
+          {{ frmSignup.controls['password'].hasError('required') ||
         frmSignup.controls['password'].hasError('hasNumber') ? 'cancel' :
-          'check_circle' }}</i>
+          'check_circle' }}
+        </i>
         Must contain at least 1 number!
-      </label>
-      <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
-        <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+      </mat-error>
+      <mat-error
+        class="col"
+        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('hasCapitalCase')">
+        <i class="material-icons">
+          {{ frmSignup.controls['password'].hasError('required') ||
         frmSignup.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
-          'check_circle' }}</i>
+          'check_circle' }}
+        </i>
         Must contain at least 1 in Capital Case!
-      </label>
-      <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
-        <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+      </mat-error>
+      <mat-error
+        class="col"
+        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('hasSmallCase')"
+      >
+        <i class="material-icons">
+          {{ frmSignup.controls['password'].hasError('required') ||
         frmSignup.controls['password'].hasError('hasSmallCase') ? 'cancel' :
-          'check_circle' }}</i>
+          'check_circle' }}
+        </i>
         Must contain at least 1 Letter in Small Case!
-      </label>
-      <label class="col" [ngClass]="frmSignup.controls['password'].hasError('required') || frmSignup.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
-        <i class="material-icons">{{ frmSignup.controls['password'].hasError('required') ||
+      </mat-error>
+      <mat-error
+        class="col"
+        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('hasSpecialCharacters')">
+        <i class="material-icons">
+          {{ frmSignup.controls['password'].hasError('required') ||
         frmSignup.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
-          'check_circle' }}</i>
+          'check_circle' }}
+        </i>
         Must contain at least 1 Special Character!
-      </label>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="fullwidth">
-      <label>
-        <input matInput type="password" placeholder="Confirmed Password" formControlName="password">
-      </label>
-      <label class="text-danger" *ngIf="frmSignup.controls['confirmPassword'].hasError('required')">
-        Password is Required!
-      </label>
-      <label class="text-danger" *ngIf="frmSignup.controls['confirmPassword'].hasError('NoPassswordMatch')">
-        Password do not match
-      </label>
-    </mat-form-field>
-    <br>
-    <button mat-raised-button color="primary" [disabled]="!frmSignup.valid">Sing up</button>
+      </mat-error>
+    </div>
+    <button mat-raised-button color="primary" [disabled]="!frmSignup.valid">Sing Up</button>
   </form>
 </mat-card>

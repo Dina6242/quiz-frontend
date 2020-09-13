@@ -54,8 +54,4 @@ export class RegisterComponent {
       }
     );
   }
-  submit(): void{
-    // do signup or something
-    console.log(this.frmSignup.value);
-  }
 }

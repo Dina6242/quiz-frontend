@@ -1,5 +1,5 @@
 <mat-card class="mat-card-cvr">
-  <form [formGroup]="frmSignup" (ngSubmit)="frmSignup.value" class="example-container">
+  <form [formGroup]="frmSignup" (ngSubmit)="auth.register(frmSignup.value)" class="example-container">
     <mat-form-field appearance="fill" class="fullwidth">
       <input matInput placeholder="Email" [ngClass]="frmSignup.controls['email'].invalid ? 'is-invalid' : ''"
              formControlName="email" required>
@@ -9,7 +9,7 @@
     </mat-error>
     <div class="example-container">
       <mat-form-field appearance="fill" class="fullwidth">
-        <input matInput placeholder="Password" [ngClass]="frmSignup.controls['password'].invalid ? 'is-invalid' : ''"
+        <input matInput placeholder="Password" type="password" [ngClass]="frmSignup.controls['password'].invalid ? 'is-invalid' : ''"
                formControlName="password" required>
       </mat-form-field>
       <mat-error
@@ -41,8 +41,7 @@
       </mat-error>
       <mat-error
         class="col"
-        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('hasSmallCase')"
-      >
+        [class.success]="!frmSignup.controls['password'].hasError('required') && !frmSignup.controls['password'].hasError('hasSmallCase')">
         <i class="material-icons">
           {{ frmSignup.controls['password'].hasError('required') ||
         frmSignup.controls['password'].hasError('hasSmallCase') ? 'cancel' :
@@ -59,6 +58,18 @@
           'check_circle' }}
         </i>
         Must contain at least 1 Special Character!
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="fill" class="fullwidth">
+      <input matInput placeholder="Email" formControlName="confirmPassword" type="password" class="form-control"
+             [ngClass]="frmSignup.controls['confirmPassword'].invalid ? 'is-invalid' : ''">
+      </mat-form-field>
+      <mat-error class="text-danger" *ngIf="frmSignup.controls['confirmPassword'].hasError('required')">
+        Password is Required!
+      </mat-error>
+      <mat-error class="text-danger" *ngIf="frmSignup.controls['confirmPassword'].hasError('NoPassswordMatch')">
+        password don't match
       </mat-error>
     </div>
     <button mat-raised-button color="primary" [disabled]="!frmSignup.valid">Sing Up</button>

@@ -30,6 +30,7 @@ import {UnLoggedGuardGuard} from './unlogged-guard.guard';
 
 
 const routes = [
+  { path: '',   redirectTo: '/quiz', pathMatch: 'full' }, // redirect to `quiz-component`
   {path: 'question/:quizId', component: QuestionComponent, canActivate: [LoggedInGuard]},
   {path: 'register', component: RegisterComponent , canActivate: [UnLoggedGuardGuard]},
   {path: 'login', component: LoginComponent, canActivate: [UnLoggedGuardGuard] },

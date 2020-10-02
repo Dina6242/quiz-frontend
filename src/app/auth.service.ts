@@ -29,7 +29,7 @@ export class AuthService {
 
   authenticate(res: string): void {
     localStorage.setItem('token', res);
-    this.router.navigate(['/']);
+    this.router.navigate(['/quiz']);
   }
 
   logout(): void {

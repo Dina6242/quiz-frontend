@@ -16,7 +16,6 @@ import {QuestionsComponent} from './questions.component';
 import {MatListModule} from '@angular/material/list';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {HomeComponent} from './home.component';
 import {QuizComponent} from './quiz.component';
 import {NavComponent} from './nav.component';
 import {QuizzesComponent} from './quizzes.component';
@@ -31,8 +30,6 @@ import {UnLoggedGuardGuard} from './unlogged-guard.guard';
 
 
 const routes = [
-  {path: '', component: HomeComponent, canActivate: [LoggedInGuard]},
-  {path: 'question', component: QuestionComponent, canActivate: [LoggedInGuard]},
   {path: 'question/:quizId', component: QuestionComponent, canActivate: [LoggedInGuard]},
   {path: 'register', component: RegisterComponent , canActivate: [UnLoggedGuardGuard]},
   {path: 'login', component: LoginComponent, canActivate: [UnLoggedGuardGuard] },
@@ -47,7 +44,6 @@ const routes = [
     AppComponent,
     QuestionComponent,
     QuestionsComponent,
-    HomeComponent,
     QuizComponent,
     NavComponent,
     QuizzesComponent,

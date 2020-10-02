@@ -4,38 +4,39 @@
     <span *ngIf="!question.id">New Question</span>
   </mat-card-title>
   <mat-card-content>
-    <form>
+    <form #form="ngForm">
         <mat-form-field class="fullwidth">
           <label>
-            <input [(ngModel)]="question.text" name="question"  matInput placeholder="Question">
+            <input [(ngModel)]="question.text" name="question"  matInput placeholder="Question" required>
           </label>
         </mat-form-field>
       <mat-form-field class="fullwidth">
         <label>
-          <input [(ngModel)]="question.correctAnswer" name="correctAnswer"  matInput placeholder="Correct Answer">
+          <input [(ngModel)]="question.correctAnswer" name="correctAnswer"  matInput placeholder="Correct Answer" required>
         </label>
       </mat-form-field>
       <mat-form-field class="fullwidth">
         <label>
-          <input [(ngModel)]="question.answer1" name="answer1"  matInput placeholder="Wrong Answer1">
+          <input [(ngModel)]="question.answer1" name="answer1"  matInput placeholder="Wrong Answer1" required>
         </label>
       </mat-form-field>
       <mat-form-field class="fullwidth">
         <label>
-          <input [(ngModel)]="question.answer2" name="answer2"  matInput placeholder="Wrong Answer2">
+          <input [(ngModel)]="question.answer2" name="answer2"  matInput placeholder="Wrong Answer2" required>
         </label>
       </mat-form-field>
       <mat-form-field class="fullwidth">
         <label>
-          <input [(ngModel)]="question.answer3" name="answer3"  matInput placeholder="Wrong Answer3">
+          <input [(ngModel)]="question.answer3" name="answer3"  matInput placeholder="Wrong Answer3" required>
         </label>
       </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button *ngIf="question.id" (click)="api.putQuestion(question)" mat-button>EDIT</button>
-    <button *ngIf="question.id" (click)="api.putQuestion(question)" mat-button>NEW</button>
-    <button *ngIf="!question.id" (click)="post(question)" mat-button>POST</button>
+    <button *ngIf="question.id"  [disabled]="!form.valid" (click)="api.putQuestion(question)" mat-button>EDIT</button>
+    <button *ngIf="question.id" type="reset" [disabled]="!form.valid" (click)="form.reset(''); question.id = undefined" mat-button>NEW</button>
+    <button *ngIf="!question.id" [disabled]="!form.valid" (click)="post(question)" mat-button>POST</button>
   </mat-card-actions>
 </mat-card>
+
 <app-questions></app-questions>
